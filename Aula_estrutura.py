@@ -31,6 +31,7 @@ a = 3
 b = 2
 print(int(a/b))
 
+#Atividade nove
 a = 5.9874
 print(round(a,2))
 
