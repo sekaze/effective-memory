@@ -1,4 +1,7 @@
-opcoes = [1, 2, 3]
+aluno = list()
+dados = dict()
+opcoes = ()
+
 while opcoes != 3:
     print('===================')
     print('===  BEM VINDO  ===')
@@ -11,39 +14,43 @@ while opcoes != 3:
     1 - Cadastrar novo aluno: 
     2 - Verificar média de alunos:
     3 - Sair''')
+    print()
     opcoes = int(input('Opção: '))
 
     if opcoes == 1:
-        resp = [1, 2]
-        while resp != 2:
-            nome = []
-            matricula = []
-            nota1 = []
-            nota2 = []
-            nota3 = []
-            media = []
-            novo_usu = input('Digite o nome do aluno: ')
-            nome.append(novo_usu)
-            nova_matri = input('Digite a matrícula do aluno: ')
-            matricula.append(nova_matri)
-            nova_nota1 = float(input('Digite a nota 1: '))
-            nota1.append(nova_nota1)
-            nova_nota2 = float(input('Digite a nota 2: '))
-            nota1.append(nova_nota2)
-            nova_nota3 = float(input('Digite a nota 3: '))
-            nota3.append(nova_nota3)
-            media_nov = (nova_nota1 + nova_nota2 + nova_nota3) / 3
-            media.append(media_nov)
-            resp = int(input('Deseja realizar novo cadastro? [1 - S / 2 - N]: '))
+        while True:
+            dados.clear()
+            dados['nome'] = input('Digite o nome do aluno: ')
+            dados['matricula'] = input('Digite a matrícula do aluno: ')
+            dados['nota1'] = float(input('Digite a nota 1: '))
+            dados['nota2'] = float(input('Digite a nota 2: '))
+            dados['nota3'] = float(input('Digite a nota 3: '))
+            dados['media'] = (dados['nota1'] + dados['nota2'] + dados['nota3']) / 3
+            aluno.append(dados.copy())
+            while True:
+                resp = str(input('Deseja realizar novo cadastro?[S/N]: ')).upper()[0]
+                if resp in 'SN':
+                    break
+                print('Responda somente S ou N!')
+            if resp == 'N':
+                break
+    elif opcoes == 4:
+        print(aluno)
 
     elif opcoes == 2:
-        resp = []
-        while resp != 2:
-            verif_matr = []
+        while True:
             x = int(input('Deseja ver a média de quantos alunos? '))
             for i in range(x):
-                ins_matri = int(input('Digite a matrícula do aluno: '))
-                verif_matr.append(ins_matri)
-        if set(verif_matr) & set(matricula):
-            print('As médias são: ',set(verif_matr) & set(matricula))
-        resp = int(input('Deseja ver mais alguma média? '))
+                vm = float(input('Digite a matrícula do aluno: '))
+            for vm in aluno:
+                if vm['matricula'] in aluno.__contains__(vm):
+                    print(f'{vm["nome"]}, {vm["matricula"]}, {vm["media"]}')
+                else:
+                    print('Uma ou mais matrículas não encontradas, verifique')
+            while True:
+                resp = str(input('Deseja verificar alguma outra média?[S/N]: ')).upper()[0]
+                if resp in 'SN':
+                    break
+                print('Responda somente S ou N!')
+            if resp == 'N':
+                break
