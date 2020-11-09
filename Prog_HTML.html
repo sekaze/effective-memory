@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baianoware</title>
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: yellow;
+    }
+    .divContainer {
+      height: 100px;
+      width: 100px;
+      background-color: green;
+    }
+    @media (max-width: 800px) {
+        body {
+            background-color: gray;
+        }
+    }
+  </style>
+</head>
+<body class="container">
+
+  <div class="divContainer"><img class="img" src="https://images8.alphacoders.com/105/thumb-1920-1054256.jpg"/></div>
+  <div class="divNome"><h1> Ola, Baianoware </h1></div>
+
+  <script>
+    const bodyScript = document.querySelector(".container")
+    const divContainer = document.querySelector(".divContainer")
+    bodyScript.addEventListener("click", () => {
+      divContainer.innerHTML = "Testando"
+    });
+  </script>
+
+</body>
+</html>
